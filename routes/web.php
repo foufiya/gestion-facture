@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BackEnd\AdminController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -26,3 +27,7 @@ Route::group(['middleware' => ['auth']], function () {
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::prefix('backend')->group(function (){ 
+    Route::get('dashboard',[AdminController::class, 'dashboard']);
+});
