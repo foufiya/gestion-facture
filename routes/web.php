@@ -19,6 +19,9 @@ Auth::Routes();
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('logout', function () {
+    return view('login');
+})->name('logout');
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/dashboard', [DashboardController::class, "index"]);
