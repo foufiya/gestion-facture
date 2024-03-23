@@ -5,16 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Facture extends Model
+class Depense extends Model
 {
     use HasFactory;
+
     protected $fillable = [
-        'title',
+        'numero',
         'date',
-        'amount',
-        'vat',
+        'montant',
+        'etat',
+        'date_paiement',
         'description',
-        'invoice_number'
     ];
 
     /**
@@ -26,5 +27,16 @@ class Facture extends Model
     public function getDateAttribute($value)
     {
         return date('Y-m-d', strtotime($value));
+    }
+
+    /**
+     * Get the formatted date_paiement attribute.
+     *
+     * @param  string  $value
+     * @return string
+     */
+    public function getDatePaiementAttribute($value)
+    {
+        return $value ? date('Y-m-d', strtotime($value)) : null;
     }
 }
