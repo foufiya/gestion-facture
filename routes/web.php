@@ -31,3 +31,11 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::prefix('backend')->group(function (){ 
     Route::get('dashboard',[AdminController::class, 'dashboard']);
 });
+
+//require __DIR__.'/auth.php';
+
+Route::get('/admin/dashboard', function () {
+    return view('admin.dashboard');
+})->middleware(['auth:admin', 'verified'])->name('admin.dashboard');
+
+require __DIR__.'/adminauth.php';
