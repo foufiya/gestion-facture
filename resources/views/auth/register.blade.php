@@ -1,11 +1,12 @@
 @extends('layouts.app')
-
+<html>
+    <div class="body">
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
+    <div class="row ">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+                <div class="card-header"><h4><strong>{{ __('Register') }}</strong></h4></div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
@@ -74,4 +75,94 @@
         </div>
     </div>
 </div>
+</div>
 @endsection
+<style>
+    .body {
+        background-color: #ebb3e5;
+    font-family: cursive;
+    }
+    .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    margin:0px 20px 10px 20px;
+}
+.card {
+    width: 600px;
+    padding: 10px;
+    max-width: 900px;
+    border-radius: 40px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    background-color: #f8f8f8;
+}
+
+.row {
+    margin-left: 20px;
+}
+/* Responsive adjustments */
+@media (max-width: 576px) {
+    .form-group label {
+        text-align: left;
+    }
+}
+
+</style>
+<!--<style>
+    html{
+        background-color: #ebb3e5;
+        font-family: cursive;
+    
+    }
+    body {
+        
+    }
+
+    .container {
+        margin-top: 50px;
+    }
+    
+    .card {
+        border: none;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .card-header {
+        position: center;
+        background-color: #007bff;
+        color: #fff;
+        font-weight: bold;
+    }
+    
+    .card-body {
+        padding: 20px;
+    }
+    
+    .form-control {
+        border: 1px solid #ced4da;
+        border-radius: 5px;
+    }
+    
+    .btn-primary {
+        background-color: #007bff;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px;
+        color: #fff;
+    }
+    
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 576px) {
+        .col-md-4, .col-md-6 {
+            text-align: center;
+        }
+    }
+    
+</style>-->
+</html>

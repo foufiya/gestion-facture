@@ -2,15 +2,24 @@
 
 namespace App\Models;
 
+use DateTimeInterface;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Permission extends Model
 {
     use HasFactory;
-    protected $fillable = ['role_id', 'permission'];
-    public function role()
+
+    public $table = 'permissions';
+
+    protected $fillable = [
+        'title',
+        'created_at',
+        'updated_at',
+    ];
+
+    protected function serializeDate(DateTimeInterface $date)
     {
-        $this->belongsTo(Role::class, "role_id");
+        return $date->format('Y-m-d H:i:s');
     }
 }

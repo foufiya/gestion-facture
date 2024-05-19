@@ -1,19 +1,20 @@
 @extends('layouts.app')
-
+<html>
 <title>login</title>
+<div class="body">
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
+    <div class="row ">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+                <div class="card-header"><h3><strong>{{ __('Login') }}</strong></h3></div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
                         <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
+                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email ') }}</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
@@ -71,4 +72,38 @@
         </div>
     </div>
 </div>
+</div>
+
+<style>
+    .body {
+        background-color: #a20000;
+    font-family: cursive;
+    }
+    .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+.card {
+    width: 600px;
+    padding: 20px;
+    max-width: 900px;
+    border-radius: 40px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    background-color: #ffe2e2;
+}
+/* Responsive adjustments */
+@media (max-width: 576px) {
+    .form-group label {
+        text-align: left;
+    }
+}
+button{
+    background-color: rgb(162, 0, 0) !important;
+}
+
+</style>
 @endsection
+</html>

@@ -32,7 +32,9 @@ return new class extends Migration
             $table->decimal('prix', 10, 2); // Ajout de la colonne pour le prix des produits
             $table->decimal('montant_total', 10, 2);
             $table->decimal('tva', 10, 2)->nullable(); // Ajout de la colonne pour le montant de la TV
+            $table->date('Payment_Date')->nullable();
             $table->date('date_echeance')->nullable();
+            
             $table->timestamps();
         });
 

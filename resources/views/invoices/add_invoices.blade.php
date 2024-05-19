@@ -79,7 +79,7 @@
                                     <!--placeholder-->
                                     <option value="" selected disabled>Determiner le Produit </option>
                                     @foreach ($produits as $produit)
-                                        <option value="{{ $produit->id }}"> {{ $produit->nom_produit }}</option>
+                                        <option value="{{ $produit->nom_produit }}"> {{ $produit->nom_produit }}</option>
                                     @endforeach
                                 </select>
                             </div>

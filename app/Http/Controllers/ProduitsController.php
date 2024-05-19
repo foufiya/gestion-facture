@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\produits;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
+use Symfony\Component\HttpFoundation\Response;
 
 class ProduitsController extends Controller
 {
@@ -12,8 +14,9 @@ class ProduitsController extends Controller
      */
     public function index()
     {
-        $produits=produits::all();
-        return view('produits.produit',compact('produits'));
+        // abort_if(Gate::denies('lesson_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        $produits = produits::all();
+        return view('produits.produit', compact('produits'));
     }
 
     /**
@@ -31,13 +34,13 @@ class ProduitsController extends Controller
     {
         produits::create(
             [
-                'nom_produit'=>$request->Product_name,
-                'description'=>$request->description,
+                'nom_produit' => $request->Product_name,
+                'description' => $request->description,
             ]
         );
         // session()->flash('Add','Le produit est bien ajouté');
         return redirect('/produit');
-        
+
     }
 
     /**
@@ -61,23 +64,23 @@ class ProduitsController extends Controller
      */
     public function update(Request $request, produits $produits)
     {
-            $produits = produits::findOrFail($request->pro_id);
+        $produits = produits::findOrFail($request->pro_id);
         $produits->update(
             [
-                'nom_produit'=> $request->Product_name,
-                'description'=> $request->description,
+                'nom_produit' => $request->Product_name,
+                'description' => $request->description,
             ]
-            );
-            return back();
+        );
+        return back();
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(produits $produits,Request $request)
+    public function destroy(produits $produits, Request $request)
     {
-       $produits=produits::findOrFail($request->pro_id);
-       $produits->delete();
-       return back();
+        $produits = produits::findOrFail($request->pro_id);
+        $produits->delete();
+        return back();
     }
 }
